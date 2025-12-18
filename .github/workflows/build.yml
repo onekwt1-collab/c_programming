@@ -8,7 +8,7 @@ on:
 
 jobs:
   build-linux:
-    runs-on: ubuntu-latest # 리눅스 서버에서 빌드
+    runs-on: windows-latest # 리눅스 서버에서 빌드
 
     steps:
     - uses: actions/checkout@v4 # 내 코드를 서버로 가져옴

@@ -1,0 +1,26 @@
+name: C/C++ CI Build
+
+on:
+  push:
+    branches: [ "main" ]  # main 브랜치에 코드가 올라올 때 실행
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-linux:
+    runs-on: ubuntu-latest # 리눅스 서버에서 빌드
+
+    steps:
+    - uses: actions/checkout@v4 # 내 코드를 서버로 가져옴
+
+    - name: Compile Code
+      run: gcc -o my_app main.c # GCC로 컴파일
+
+    - name: Run Test
+      run: ./my_app # 프로그램이 정상 실행되는지 확인
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v4 # 빌드된 파일을 다운로드 가능하게 업로드
+      with:
+        name: compiled-binary
+        path: my_app
